@@ -73,7 +73,7 @@ $contactTimes = ["Buổi sáng (8h-11h)", "Buổi chiều (13h-17h)"];
                         <img src="<?= $product['image'] ?>" class="card-img-top" alt="<?= $product['name'] ?>">
                         <div class="card-body">
                             <h5><?= $product['name'] ?></h5>
-                            <p class="price"><?= $product['price'] ?> đồng</p>
+                            <p class="price"><?= number_format($product['price'], 0, ',', '.') ?> VNĐ</p>
                             <a href="#" class="btn btn-outline-primary btn-sm">Xem chi tiết</a>
                             <a href="#" class="btn btn-primary btn-sm">Mua ngay</a>
                         </div>
