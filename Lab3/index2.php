@@ -54,6 +54,7 @@ foreach ($students as $st) {
                     <th>CSS</th>
                     <th>PHP</th>
                     <th>Điểm TB</th>
+                    <th>Xếp loại</th>
                     <th>Học bổng</th>
                 </tr>
             </thead>
