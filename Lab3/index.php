@@ -2,33 +2,31 @@
 require "includes/header.php";
 require "functions/common.php";
 
-// Liste frischer Blumen (Kategorie C1)
-$produkte_C1 = [
-    ["id" => "H001", "name" => "Rote Rose", "menge" => 15, "preis" => 250000],
-    ["id" => "H002", "name" => "Sonnenblume", "menge" => 20, "preis" => 180000],
-    ["id" => "H003", "name" => "Holländische Tulpe", "menge" => 10, "preis" => 350000]
+$products_C1 = [
+    ["id" => "H001", "name" => "Hoa hồng đỏ", "quantity" => 15, "price" => 250000],
+    ["id" => "H002", "name" => "Hoa hướng dương", "quantity" => 20, "price" => 180000],
+    ["id" => "H003", "name" => "Hoa tulip Hà Lan", "quantity" => 10, "price" => 350000]
 ];
 
-// Liste von Zierpflanzentöpfen (Kategorie C2)
-$produkte_C2 = [
-    ["id" => "C001", "name" => "Geldbaum-Topf", "menge" => 8, "preis" => 150000],
-    ["id" => "C002", "name" => "Efeutute-Topf", "menge" => 12, "preis" => 95000],
-    ["id" => "C003", "name" => "Sukkulenten-Topf", "menge" => 25, "preis" => 45000]
+$products_C2 = [
+    ["id" => "C001", "name" => "Chậu cây kim tiền", "quantity" => 8, "price" => 150000],
+    ["id" => "C002", "name" => "Chậu cây trầu bà", "quantity" => 12, "price" => 95000],
+    ["id" => "C003", "name" => "Chậu cây sen đá", "quantity" => 25, "price" => 45000]
 ];
 ?>
 
 <main class="container my-5">
     <section class="mb-5">
-        <?php produktTabelleAnzeigen($produkte_C1, "Liste frischer Blumen (Kategorie C1)"); ?>
+        <?php renderProductTable($products_C1, "Danh sách hoa tươi (Danh mục C1)"); ?>
     </section>
 
     <section class="mb-5">
-       <?php produktTabelleAnzeigen($produkte_C2, "Liste von Zierpflanzentöpfen (Kategorie C2)", "VNĐ"); ?>
+        <?php renderProductTable($products_C2, "Danh sách cây cảnh (Danh mục C2)", "VNĐ"); ?>
     </section>
 
     <section class="mb-5">
-        <h2>Willkommen zu unserem Praktikum</h2>
-        <p>Herzlich willkommen auf unserer Webseite für Web-Programmierung. Hier demonstrieren wir grundlegende Funktionen und modulare Strukturen in PHP mit Bootstrap 5.</p>
+        <h2>Giới thiệu</h2>
+        <p>Đây là trang hiển thị danh sách sản phẩm theo danh mục sử dụng PHP và giao diện Bootstrap 5.</p>
     </section>
 </main>
 

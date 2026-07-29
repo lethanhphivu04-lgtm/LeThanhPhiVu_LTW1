@@ -1,37 +1,21 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PHP-Website - Labor 3</title>
-    <!-- Bootstrap 5 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/style.css">
+    <title>Thực hành Lab 3 - PHP & Bootstrap 5</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <!-- Header & Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
         <div class="container">
-            <a class="navbar-brand" href="index.php">PHP-Website</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="index.php">Startseite</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.php">Produkte</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="index2.php">Studenten</a>
-                    </li>
+            <a class="navbar-brand" href="index.php">Lab 3</a>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.php">Trang chủ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.php">Sản phẩm</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index2.php">Sinh viên</a></li>
                 </ul>
-                <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Suchen ...">
-                    <button class="btn btn-outline-success" type="submit">Suchen</button>
-                </form>
             </div>
         </div>
     </nav>

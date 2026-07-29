@@ -2,112 +2,87 @@
 require "includes/header.php";
 require "classes/Student.php";
 
-$studenten = [
-    new Student("SV001", "Lê Thanh Phi Vũ", "Männlich", 2003, 10.0, 10.0, 10.0),
-    new Student("SV002", "Anna Schmidt", "Weiblich", 2004, 8.5, 8.0, 8.5),
-    new Student("SV003", "Lukas Weber", "Männlich", 2003, 7.0, 6.5, 7.5),
-    new Student("SV004", "Leon Meyer", "Männlich", 2002, 5.0, 5.5, 6.0),
-    new Student("SV005", "Sophia Wagner", "Weiblich", 2004, 4.0, 4.5, 3.5),
-    new Student("SV006", "Emma Hoffmann", "Weiblich", 2004, 8.0, 8.5, 8.0)
+$students = [
+    new Student("SV001", "Lê Thanh Phi Vũ", "Nam", 2004, 10, 10, 10),
+    new Student("SV002", "Nguyễn Văn An", "Nam", 2004, 8.5, 7.5, 8.0),
+    new Student("SV003", "Trần Thị Mai", "Nữ", 2005, 9.0, 8.0, 8.5),
+    new Student("SV004", "Lê Hoàng Nam", "Nam", 2003, 6.5, 7.0, 6.0),
+    new Student("SV005", "Phạm Thu Thảo", "Nữ", 2004, 7.5, 8.0, 7.5),
+    new Student("SV006", "Hoàng Quang Duy", "Nam", 2004, 8.0, 8.5, 9.0)
 ];
 
-// Einfache Statistik mit foreach-Schleife
-$gesamtAnzahl = count($studenten);
-$maennlichAnzahl = 0;
-$weiblichAnzahl = 0;
-$stipendiumAnzahl = 0;
-$hervorragendAnzahl = 0;
-$summeDurchschnitt = 0;
-$maxDurchschnitt = 0;
-$minDurchschnitt = 10;
+$totalStudents = count($students);
+$maleCount = 0;
+$femaleCount = 0;
+$scholarshipCount = 0;
+$maxAvg = 0;
+$minAvg = 10;
 
-foreach ($studenten as $s) {
-    if ($s->geschlecht == "Männlich") {
-        $maennlichAnzahl++;
+foreach ($students as $st) {
+    if ($st->gender == "Nam") {
+        $maleCount++;
     } else {
-        $weiblichAnzahl++;
+        $femaleCount++;
     }
 
-    if ($s->stipendiumHolen() == "Ja") {
-        $stipendiumAnzahl++;
+    if ($st->isScholarship()) {
+        $scholarshipCount++;
     }
 
-    if ($s->bewertungHolen() == "Hervorragend") {
-        $hervorragendAnzahl++;
+    $avg = $st->calculateAverage();
+    if ($avg > $maxAvg) {
+        $maxAvg = $avg;
     }
-
-    $durchschnitt = $s->durchschnittHolen();
-    $summeDurchschnitt += $durchschnitt;
-
-    if ($durchschnitt > $maxDurchschnitt) {
-        $maxDurchschnitt = $durchschnitt;
-    }
-    if ($durchschnitt < $minDurchschnitt) {
-        $minDurchschnitt = $durchschnitt;
+    if ($avg < $minAvg) {
+        $minAvg = $avg;
     }
 }
-
-$gesamtdurchschnittAller = round($summeDurchschnitt / $gesamtAnzahl, 2);
 ?>
 
 <main class="container my-5">
-    <h2 class="mb-4 text-center">Studentenliste</h2>
+    <h2 class="mb-4">Danh sách Sinh viên</h2>
 
-    <!-- Studententabelle -->
     <div class="table-responsive mb-5">
-        <table class="table table-bordered table-hover align-middle text-center">
-            <thead class="table-dark">
+        <table class="table table-bordered table-hover table-striped align-middle">
+            <thead class="table-dark text-center">
                 <tr>
-                    <th>Nr.</th>
-                    <th>Matrikelnummer</th>
-                    <th>Vollständiger Name</th>
-                    <th>Geschlecht</th>
-                    <th>Geburtsjahr</th>
-                    <th>Alter</th>
-                    <th>HTML-Note</th>
-                    <th>CSS-Note</th>
-                    <th>PHP-Note</th>
-                    <th>Gesamtpunkte</th>
-                    <th>Durchschnitt</th>
-                    <th>Bewertung</th>
-                    <th>Stipendium</th>
+                    <th>MSSV</th>
+                    <th>Họ và tên</th>
+                    <th>Giới tính</th>
+                    <th>Tuổi</th>
+                    <th>HTML</th>
+                    <th>CSS</th>
+                    <th>PHP</th>
+                    <th>Điểm TB</th>
+                    <th>Học bổng</th>
                 </tr>
             </thead>
             <tbody>
                 <?php
-                foreach ($studenten as $index => $student) {
-                    $student->infoAnzeigen($index + 1);
+                foreach ($students as $student) {
+                    $student->displayInfo();
                 }
                 ?>
             </tbody>
         </table>
     </div>
 
-    <!-- Statistik-Dashboard unter der Tabelle -->
-    <h3 class="mb-3 text-center">Gesamtstatistik-Dashboard</h3>
-    <div class="row mb-4 text-center">
-        <div class="col-md-3 mb-3">
-            <div class="card bg-primary text-white p-3">
-                <h5>Gesamtzahl der Studenten</h5>
-                <h3><?php echo $gesamtAnzahl; ?> (Männlich: <?php echo $maennlichAnzahl; ?>, Weiblich: <?php echo $weiblichAnzahl; ?>)</h3>
-            </div>
-        </div>
-        <div class="col-md-3 mb-3">
-            <div class="card bg-success text-white p-3">
-                <h5>Stipendium / Hervorragend</h5>
-                <h3><?php echo $stipendiumAnzahl; ?> / <?php echo $hervorragendAnzahl; ?></h3>
-            </div>
-        </div>
-        <div class="col-md-3 mb-3">
-            <div class="card bg-info text-white p-3">
-                <h5>Gesamtdurchschnitt</h5>
-                <h3><?php echo $gesamtdurchschnittAller; ?></h3>
-            </div>
-        </div>
-        <div class="col-md-3 mb-3">
-            <div class="card bg-dark text-white p-3">
-                <h5>Höchster / Niedrigster Durchschnitt</h5>
-                <h3><?php echo $maxDurchschnitt; ?> / <?php echo $minDurchschnitt; ?></h3>
+    <div class="card bg-light border-0 shadow-sm">
+        <div class="card-body">
+            <h4 class="card-title mb-3">Thống kê tổng quan</h4>
+            <div class="row">
+                <div class="col-md-3 mb-2">
+                    <strong>Tổng sinh viên:</strong> <?php echo $totalStudents; ?>
+                </div>
+                <div class="col-md-3 mb-2">
+                    <strong>Nam / Nữ:</strong> <?php echo $maleCount . " / " . $femaleCount; ?>
+                </div>
+                <div class="col-md-3 mb-2">
+                    <strong>Đạt học bổng:</strong> <?php echo $scholarshipCount; ?>
+                </div>
+                <div class="col-md-3 mb-2">
+                    <strong>Điểm TB cao nhất / thấp nhất:</strong> <?php echo $maxAvg . " / " . $minAvg; ?>
+                </div>
             </div>
         </div>
     </div>
