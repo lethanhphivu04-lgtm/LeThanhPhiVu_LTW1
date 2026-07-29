@@ -14,9 +14,6 @@ $students = [
 $totalStudents = count($students);
 $maleCount = 0;
 $femaleCount = 0;
-$scholarshipCount = 0;
-$maxAvg = 0;
-$minAvg = 10;
 
 foreach ($students as $st) {
     if ($st->gender == "Nam") {
@@ -24,38 +21,24 @@ foreach ($students as $st) {
     } else {
         $femaleCount++;
     }
-
-    if ($st->isScholarship()) {
-        $scholarshipCount++;
-    }
-
-    $avg = $st->calculateAverage();
-    if ($avg > $maxAvg) {
-        $maxAvg = $avg;
-    }
-    if ($avg < $minAvg) {
-        $minAvg = $avg;
-    }
 }
 ?>
 
 <main class="container my-5">
-    <h2 class="mb-4">Danh sách Sinh viên</h2>
+    <h2 class="mb-4">Danh sách sinh viên</h2>
 
     <div class="table-responsive mb-5">
         <table class="table table-bordered table-hover table-striped align-middle">
             <thead class="table-dark text-center">
                 <tr>
-                    <th>MSSV</th>
-                    <th>Họ và tên</th>
+                    <th>Mã SV</th>
+                    <th>Họ tên</th>
                     <th>Giới tính</th>
-                    <th>Tuổi</th>
+                    <th>Năm sinh</th>
                     <th>HTML</th>
                     <th>CSS</th>
                     <th>PHP</th>
-                    <th>Điểm TB</th>
-                    <th>Xếp loại</th>
-                    <th>Học bổng</th>
+                    <th>Tổng điểm</th>
                 </tr>
             </thead>
             <tbody>
@@ -72,17 +55,11 @@ foreach ($students as $st) {
         <div class="card-body">
             <h4 class="card-title mb-3">Thống kê tổng quan</h4>
             <div class="row">
-                <div class="col-md-3 mb-2">
+                <div class="col-md-6 mb-2">
                     <strong>Tổng sinh viên:</strong> <?php echo $totalStudents; ?>
                 </div>
-                <div class="col-md-3 mb-2">
+                <div class="col-md-6 mb-2">
                     <strong>Nam / Nữ:</strong> <?php echo $maleCount . " / " . $femaleCount; ?>
-                </div>
-                <div class="col-md-3 mb-2">
-                    <strong>Đạt học bổng:</strong> <?php echo $scholarshipCount; ?>
-                </div>
-                <div class="col-md-3 mb-2">
-                    <strong>Điểm TB cao nhất / thấp nhất:</strong> <?php echo $maxAvg . " / " . $minAvg; ?>
                 </div>
             </div>
         </div>
