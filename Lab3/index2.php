@@ -8,21 +8,7 @@ $studenten = [
     new Student("SV003", "Lukas Weber", "Männlich", 2003, 7.0, 6.5, 7.5),
     new Student("SV004", "Leon Meyer", "Männlich", 2002, 5.0, 5.5, 6.0),
     new Student("SV005", "Sophia Wagner", "Weiblich", 2004, 4.0, 4.5, 3.5),
-    new Student("SV006", "David Becker", "Männlich", 2003, 9.0, 9.5, 9.0),
-    new Student("SV007", "Emma Hoffmann", "Weiblich", 2004, 8.0, 8.5, 8.0),
-    new Student("SV008", "Paul Schäfer", "Männlich", 2003, 6.5, 7.0, 6.0),
-    new Student("SV009", "Mia Koch", "Weiblich", 2004, 5.5, 5.0, 5.5),
-    new Student("SV010", "Felix Richter", "Männlich", 2002, 3.5, 4.0, 4.5),
-    new Student("SV011", "Hannah Klein", "Weiblich", 2003, 9.2, 9.0, 9.4),
-    new Student("SV012", "Jonas Wolf", "Männlich", 2004, 8.2, 7.8, 8.5),
-    new Student("SV013", "Emely Schröder", "Weiblich", 2003, 6.8, 6.5, 7.0),
-    new Student("SV014", "Tim Neumann", "Männlich", 2002, 5.2, 5.0, 5.4),
-    new Student("SV015", "Laura Schwarz", "Weiblich", 2004, 4.2, 3.8, 4.0),
-    new Student("SV016", "Finn Zimmermann", "Männlich", 2003, 9.0, 8.8, 9.2),
-    new Student("SV017", "Sarah Krüger", "Weiblich", 2004, 8.4, 8.2, 8.6),
-    new Student("SV018", "Jan Braun", "Männlich", 2003, 7.2, 7.0, 6.8),
-    new Student("SV019", "Julia Hofmann", "Weiblich", 2002, 5.8, 5.5, 5.2),
-    new Student("SV020", "Ben Lange", "Männlich", 2004, 9.8, 9.5, 9.6)
+    new Student("SV006", "Emma Hoffmann", "Weiblich", 2004, 8.0, 8.5, 8.0)
 ];
 
 // Einfache Statistik mit foreach-Schleife
