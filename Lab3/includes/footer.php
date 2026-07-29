@@ -18,7 +18,7 @@
                     <h5 class="mb-3">Thông tin sinh viên</h5>
                     <p class="text-secondary small mb-1">Họ tên: Lê Thanh Phi Vũ</p>
                     <p class="text-secondary small mb-1">MSSV: 2123110178</p>
-                    <p class="text-secondary small mb-0">Email: vule@example.com</p>
+                    <p class="text-secondary small mb-0">Email: lethanhphivu04@gmail.com</p>
                 </div>
             </div>
             <hr class="border-secondary my-3">
