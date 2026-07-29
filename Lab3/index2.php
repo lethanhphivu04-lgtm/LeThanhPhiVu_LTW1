@@ -14,12 +14,20 @@ $students = [
 $totalStudents = count($students);
 $maleCount = 0;
 $femaleCount = 0;
+$scholarshipCount = 0;
+$maxTotal = 0;
 
 foreach ($students as $st) {
     if ($st->gender == "Nam") {
         $maleCount++;
     } else {
         $femaleCount++;
+    }
+    if ($st->isScholarship()) {
+        $scholarshipCount++;
+    }
+    if ($st->calculateTotal() > $maxTotal) {
+        $maxTotal = $st->calculateTotal();
     }
 }
 ?>
@@ -39,6 +47,7 @@ foreach ($students as $st) {
                     <th>CSS</th>
                     <th>PHP</th>
                     <th>Tổng điểm</th>
+                    <th>Học bổng</th>
                 </tr>
             </thead>
             <tbody>
@@ -51,16 +60,30 @@ foreach ($students as $st) {
         </table>
     </div>
 
-    <div class="card bg-light border-0 shadow-sm">
-        <div class="card-body">
-            <h4 class="card-title mb-3">Thống kê tổng quan</h4>
-            <div class="row">
-                <div class="col-md-6 mb-2">
-                    <strong>Tổng sinh viên:</strong> <?php echo $totalStudents; ?>
-                </div>
-                <div class="col-md-6 mb-2">
-                    <strong>Nam / Nữ:</strong> <?php echo $maleCount . " / " . $femaleCount; ?>
-                </div>
+    <h4 class="mb-3">Thống kê tổng quan</h4>
+    <div class="row g-3 text-center mb-5">
+        <div class="col-md-3">
+            <div class="card bg-light border-0 shadow-sm p-3">
+                <h6 class="text-muted mb-1">Tổng sinh viên</h6>
+                <h3 class="mb-0 fw-bold"><?php echo $totalStudents; ?></h3>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card bg-light border-0 shadow-sm p-3">
+                <h6 class="text-muted mb-1">Nam / Nữ</h6>
+                <h3 class="mb-0 fw-bold"><?php echo $maleCount . " / " . $femaleCount; ?></h3>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card bg-light border-0 shadow-sm p-3">
+                <h6 class="text-muted mb-1">Đạt học bổng</h6>
+                <h3 class="mb-0 fw-bold text-success"><?php echo $scholarshipCount; ?></h3>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card bg-light border-0 shadow-sm p-3">
+                <h6 class="text-muted mb-1">Tổng điểm cao nhất</h6>
+                <h3 class="mb-0 fw-bold text-primary"><?php echo $maxTotal; ?></h3>
             </div>
         </div>
     </div>

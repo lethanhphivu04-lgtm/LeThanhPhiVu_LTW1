@@ -25,9 +25,15 @@ class Student
         return $this->scoreHtml + $this->scoreCss + $this->scorePhp;
     }
 
+    public function isScholarship()
+    {
+        return ($this->calculateTotal() >= 24 && $this->scoreHtml >= 7 && $this->scoreCss >= 7 && $this->scorePhp >= 7);
+    }
+
     public function displayInfo()
     {
         $total = $this->calculateTotal();
+        $scholarship = $this->isScholarship() ? "Học bổng" : "";
 
         echo "<tr>";
         echo "<td>" . $this->studentId . "</td>";
@@ -38,6 +44,7 @@ class Student
         echo "<td class=\"text-center\">" . $this->scoreCss . "</td>";
         echo "<td class=\"text-center\">" . $this->scorePhp . "</td>";
         echo "<td class=\"text-center fw-bold\">" . $total . "</td>";
+        echo "<td class=\"text-center text-success fw-bold\">" . $scholarship . "</td>";
         echo "</tr>";
     }
 }
