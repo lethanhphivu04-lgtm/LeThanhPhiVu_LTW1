@@ -7,8 +7,8 @@ function formatPrice($price, $currency = "đ")
 function getTotalQuantity($products)
 {
     $total = 0;
-    foreach ($products as $product) {
-        $total += $product['quantity'];
+    foreach ($products as $p) {
+        $total += $p["quantity"];
     }
     return $total;
 }
@@ -16,45 +16,133 @@ function getTotalQuantity($products)
 function getTotalPrice($products)
 {
     $total = 0;
-    foreach ($products as $product) {
-        $total += $product['quantity'] * $product['price'];
+    foreach ($products as $p) {
+        $total += $p["quantity"] * $p["price"];
     }
     return $total;
 }
 
-function renderProductTable($products, $tableTitle, $currency = "đ")
+function renderProductTable($products, $categoryName, $currency = "đ")
 {
-    echo '<h3 class="mt-4 mb-3">' . $tableTitle . '</h3>';
-    echo '<table class="table table-bordered table-hover table-striped align-middle">';
-    echo '
-        <thead class="table-dark">
-            <tr>
-                <th width="60">STT</th>
-                <th width="120">Mã sản phẩm</th>
-                <th>Tên sản phẩm</th>
-                <th width="120" class="text-center">Số lượng</th>
-                <th width="180" class="text-end">Đơn giá</th>
-            </tr>
-        </thead>
-        <tbody>';
-    foreach ($products as $index => $product) {
-        echo '<tr>';
-        echo '<td>' . ($index + 1) . '</td>';
-        echo '<td>' . $product['id'] . '</td>';
-        echo '<td>' . $product['name'] . '</td>';
-        echo '<td class="text-center">' . $product['quantity'] . '</td>';
-        echo '<td class="text-end">' . formatPrice($product['price'], $currency) . '</td>';
-        echo '</tr>';
+    echo "<h3>" . $categoryName . "</h3>";
+    echo "<table class='table table-bordered table-striped table-hover mt-3'>";
+    echo "<thead class='table-dark'><tr>";
+    echo "<th>Mã sản phẩm</th>";
+    echo "<th>Tên sản phẩm</th>";
+    echo "<th>Số lượng</th>";
+    echo "<th>Đơn giá</th>";
+    echo "<th>Thành tiền</th>";
+    echo "</tr></thead>";
+    echo "<tbody>";
+
+    foreach ($products as $p) {
+        $subtotal = $p["quantity"] * $p["price"];
+        echo "<tr>";
+        echo "<td>" . $p["id"] . "</td>";
+        echo "<td>" . $p["name"] . "</td>";
+        echo "<td>" . $p["quantity"] . "</td>";
+        echo "<td>" . formatPrice($p["price"], $currency) . "</td>";
+        echo "<td>" . formatPrice($subtotal, $currency) . "</td>";
+        echo "</tr>";
     }
-    echo '
-        </tbody>
-        <tfoot class="table-warning fw-bold">
-            <tr>
-                <td colspan="3" class="text-end">Tổng cộng</td>
-                <td class="text-center">' . getTotalQuantity($products) . '</td>
-                <td class="text-end">' . formatPrice(getTotalPrice($products), $currency) . '</td>
-            </tr>
-        </tfoot>';
-    echo '</table>';
+
+    $totalQty = getTotalQuantity($products);
+    $totalPrice = getTotalPrice($products);
+
+    echo "<tr class='table-warning fw-bold'>";
+    echo "<td colspan='2' class='text-end'>Tổng cộng:</td>";
+    echo "<td>" . $totalQty . "</td>";
+    echo "<td></td>";
+    echo "<td>" . formatPrice($totalPrice, $currency) . "</td>";
+    echo "</tr>";
+
+    echo "</tbody></table>";
+}
+
+// Các hàm thống kê sinh viên (Bài D - Yêu cầu 7)
+function countStudents($students)
+{
+    return count($students);
+}
+
+function countMaleStudents($students)
+{
+    $count = 0;
+    foreach ($students as $st) {
+        if ($st->gender == "Nam") {
+            $count++;
+        }
+    }
+    return $count;
+}
+
+function countFemaleStudents($students)
+{
+    $count = 0;
+    foreach ($students as $st) {
+        if ($st->gender == "Nữ") {
+            $count++;
+        }
+    }
+    return $count;
+}
+
+function countScholarshipStudents($students)
+{
+    $count = 0;
+    foreach ($students as $st) {
+        if ($st->getScholarship()) {
+            $count++;
+        }
+    }
+    return $count;
+}
+
+function countExcellentStudents($students)
+{
+    $count = 0;
+    foreach ($students as $st) {
+        if ($st->getRank() == "Xuất sắc") {
+            $count++;
+        }
+    }
+    return $count;
+}
+
+function getAverageScore($students)
+{
+    $sum = 0;
+    $count = countStudents($students);
+    if ($count == 0) {
+        return 0;
+    }
+    foreach ($students as $st) {
+        $sum += $st->getAverage();
+    }
+    return round($sum / $count, 2);
+}
+
+function getHighestAverage($students)
+{
+    $max = 0;
+    foreach ($students as $st) {
+        $avg = $st->getAverage();
+        if ($avg > $max) {
+            $max = $avg;
+        }
+    }
+    return $max;
+}
+
+function getLowestAverage($students)
+{
+    $min = 10;
+    foreach ($students as $st) {
+        $avg = $st->getAverage();
+        if ($avg < $min) {
+            $min = $avg;
+        }
+    }
+    return $min;
 }
 ?>

@@ -1,7 +1,7 @@
 <?php
 require "includes/header.php";
 require "classes/Student.php";
-require "functions/student_stats.php";
+require "functions/common.php";
 
 $students = [
     new Student("SV001", "Lê Thanh Phi Vũ", "Nam", 2004, 10, 10, 10),
