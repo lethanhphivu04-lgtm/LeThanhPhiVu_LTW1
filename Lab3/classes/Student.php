@@ -20,30 +20,55 @@ class Student
         $this->scorePhp = $scorePhp;
     }
 
-    public function calculateTotal()
+    public function getAge()
     {
-        return $this->scoreHtml + $this->scoreCss + $this->scorePhp;
+        return date("Y") - $this->birthYear;
     }
 
-    public function isScholarship()
+    public function getAverage()
     {
-        return ($this->calculateTotal() >= 24 && $this->scoreHtml >= 7 && $this->scoreCss >= 7 && $this->scorePhp >= 7);
+        return round(($this->scoreHtml + $this->scoreCss + $this->scorePhp) / 3, 2);
     }
 
-    public function displayInfo()
+    public function getRank()
     {
-        $total = $this->calculateTotal();
-        $scholarship = $this->isScholarship() ? "Học bổng" : "";
+        $avg = $this->getAverage();
+        if ($avg >= 9.0) {
+            return "Xuất sắc";
+        } elseif ($avg >= 8.0) {
+            return "Giỏi";
+        } elseif ($avg >= 6.5) {
+            return "Khá";
+        } elseif ($avg >= 5.0) {
+            return "Trung bình";
+        } else {
+            return "Yếu";
+        }
+    }
+
+    public function getScholarship()
+    {
+        return ($this->getAverage() >= 8.0 && $this->scoreHtml >= 7 && $this->scoreCss >= 7 && $this->scorePhp >= 7);
+    }
+
+    public function showInfo()
+    {
+        $age = $this->getAge();
+        $avg = $this->getAverage();
+        $rank = $this->getRank();
+        $scholarship = $this->getScholarship() ? "Học bổng" : "";
 
         echo "<tr>";
         echo "<td>" . $this->studentId . "</td>";
         echo "<td>" . $this->fullName . "</td>";
         echo "<td>" . $this->gender . "</td>";
         echo "<td class=\"text-center\">" . $this->birthYear . "</td>";
+        echo "<td class=\"text-center\">" . $age . "</td>";
         echo "<td class=\"text-center\">" . $this->scoreHtml . "</td>";
         echo "<td class=\"text-center\">" . $this->scoreCss . "</td>";
         echo "<td class=\"text-center\">" . $this->scorePhp . "</td>";
-        echo "<td class=\"text-center fw-bold\">" . $total . "</td>";
+        echo "<td class=\"text-center fw-bold\">" . $avg . "</td>";
+        echo "<td class=\"text-center\">" . $rank . "</td>";
         echo "<td class=\"text-center text-success fw-bold\">" . $scholarship . "</td>";
         echo "</tr>";
     }

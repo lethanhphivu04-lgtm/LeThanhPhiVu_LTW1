@@ -35,7 +35,7 @@ $totalStudents = count($students);
 $maleCount = 0;
 $femaleCount = 0;
 $scholarshipCount = 0;
-$maxTotal = 0;
+$maxAvg = 0;
 
 foreach ($students as $st) {
     if ($st->gender == "Nam") {
@@ -43,11 +43,11 @@ foreach ($students as $st) {
     } else {
         $femaleCount++;
     }
-    if ($st->isScholarship()) {
+    if ($st->getScholarship()) {
         $scholarshipCount++;
     }
-    if ($st->calculateTotal() > $maxTotal) {
-        $maxTotal = $st->calculateTotal();
+    if ($st->getAverage() > $maxAvg) {
+        $maxAvg = $st->getAverage();
     }
 }
 ?>
@@ -63,17 +63,19 @@ foreach ($students as $st) {
                     <th>Họ tên</th>
                     <th>Giới tính</th>
                     <th>Năm sinh</th>
+                    <th>Tuổi</th>
                     <th>HTML</th>
                     <th>CSS</th>
                     <th>PHP</th>
-                    <th>Tổng điểm</th>
+                    <th>Điểm TB</th>
+                    <th>Xếp loại</th>
                     <th>Học bổng</th>
                 </tr>
             </thead>
             <tbody>
                 <?php
                 foreach ($students as $student) {
-                    $student->displayInfo();
+                    $student->showInfo();
                 }
                 ?>
             </tbody>
@@ -102,8 +104,8 @@ foreach ($students as $st) {
         </div>
         <div class="col-md-3">
             <div class="card bg-light border-0 shadow-sm p-3">
-                <h6 class="text-muted mb-1">Tổng điểm cao nhất</h6>
-                <h3 class="mb-0 fw-bold text-primary"><?php echo $maxTotal; ?></h3>
+                <h6 class="text-muted mb-1">Điểm TB cao nhất</h6>
+                <h3 class="mb-0 fw-bold text-primary"><?php echo $maxAvg; ?></h3>
             </div>
         </div>
     </div>
