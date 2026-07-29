@@ -1,6 +1,6 @@
 <?php
-function preisFormatieren($preis, $waehrung = "€", $nachkommastellen = 2) {
-    return number_format($preis, $nachkommastellen, ",", ".") . " " . $waehrung;
+function preisFormatieren($preis, $waehrung = "€") {
+    return number_format($preis, 0, ",", ".") . " " . $waehrung;
 }
 
 function gesamtzahlHolen($produkte) {
@@ -19,7 +19,7 @@ function gesamtpreisHolen($produkte) {
     return $gesamt;
 }
 
-function produktTabelleAnzeigen($produkte, $tabellenTitel, $waehrung = "€", $nachkommastellen = 2) {
+function produktTabelleAnzeigen($produkte, $tabellenTitel, $waehrung = "€") {
     echo "<h3 class='mt-4 mb-3'>{$tabellenTitel}</h3>";
     echo "<table class='table table-bordered table-hover table-striped align-middle'>";
     echo "
@@ -39,7 +39,7 @@ function produktTabelleAnzeigen($produkte, $tabellenTitel, $waehrung = "€", $n
         echo "<td>{$produkt['id']}</td>";
         echo "<td>{$produkt['name']}</td>";
         echo "<td class='text-center'>{$produkt['menge']}</td>";
-        echo "<td class='text-end'>" . preisFormatieren($produkt['preis'], $waehrung, $nachkommastellen) . "</td>";
+        echo "<td class='text-end'>" . preisFormatieren($produkt['preis'], $waehrung) . "</td>";
         echo "</tr>";
     }
     echo "
@@ -48,7 +48,7 @@ function produktTabelleAnzeigen($produkte, $tabellenTitel, $waehrung = "€", $n
             <tr>
                 <td colspan='3' class='text-end'>Gesamt</td>
                 <td class='text-center'>" . gesamtzahlHolen($produkte) . "</td>
-                <td class='text-end'>" . preisFormatieren(gesamtpreisHolen($produkte), $waehrung, $nachkommastellen) . "</td>
+                <td class='text-end'>" . preisFormatieren(gesamtpreisHolen($produkte), $waehrung) . "</td>
             </tr>
         </tfoot>";
     echo "</table>";

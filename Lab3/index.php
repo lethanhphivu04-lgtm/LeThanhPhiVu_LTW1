@@ -4,16 +4,16 @@ require "functions/common.php";
 
 // Liste frischer Blumen (Kategorie C1)
 $produkte_C1 = [
-    ["id" => "H001", "name" => "Rote Rose", "menge" => 15, "preis" => 10.50],
-    ["id" => "H002", "name" => "Sonnenblume", "menge" => 20, "preis" => 7.80],
-    ["id" => "H003", "name" => "Holländische Tulpe", "menge" => 10, "preis" => 15.00]
+    ["id" => "H001", "name" => "Rote Rose", "menge" => 15, "preis" => 250000],
+    ["id" => "H002", "name" => "Sonnenblume", "menge" => 20, "preis" => 180000],
+    ["id" => "H003", "name" => "Holländische Tulpe", "menge" => 10, "preis" => 350000]
 ];
 
 // Liste von Zierpflanzentöpfen (Kategorie C2)
 $produkte_C2 = [
-    ["id" => "C001", "name" => "Geldbaum-Topf", "menge" => 8, "preis" => 12.50],
-    ["id" => "C002", "name" => "Efeutute-Topf", "menge" => 12, "preis" => 6.20],
-    ["id" => "C003", "name" => "Sukkulenten-Topf", "menge" => 25, "preis" => 3.50]
+    ["id" => "C001", "name" => "Geldbaum-Topf", "menge" => 8, "preis" => 150000],
+    ["id" => "C002", "name" => "Efeutute-Topf", "menge" => 12, "preis" => 95000],
+    ["id" => "C003", "name" => "Sukkulenten-Topf", "menge" => 25, "preis" => 45000]
 ];
 ?>
 
@@ -23,7 +23,7 @@ $produkte_C2 = [
     </section>
 
     <section class="mb-5">
-       <?php produktTabelleAnzeigen($produkte_C2, "Liste von Zierpflanzentöpfen (Kategorie C2)", "€", 2); ?>
+       <?php produktTabelleAnzeigen($produkte_C2, "Liste von Zierpflanzentöpfen (Kategorie C2)", "VNĐ"); ?>
     </section>
 
     <section class="mb-5">
