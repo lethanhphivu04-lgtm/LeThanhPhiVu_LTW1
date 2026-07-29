@@ -8,7 +8,27 @@ $students = [
     new Student("SV003", "Trần Thị Mai", "Nữ", 2005, 9.0, 8.0, 8.5),
     new Student("SV004", "Lê Hoàng Nam", "Nam", 2003, 6.5, 7.0, 6.0),
     new Student("SV005", "Phạm Thu Thảo", "Nữ", 2004, 7.5, 8.0, 7.5),
-    new Student("SV006", "Hoàng Quang Duy", "Nam", 2004, 8.0, 8.5, 9.0)
+    new Student("SV006", "Hoàng Quang Duy", "Nam", 2004, 8.0, 8.5, 9.0),
+    new Student("SV007", "Nguyễn Thị Lan", "Nữ", 2004, 8.5, 9.0, 8.0),
+    new Student("SV008", "Phạm Văn Hùng", "Nam", 2003, 7.0, 6.5, 7.5),
+    new Student("SV009", "Trần Hoàng Phúc", "Nam", 2005, 9.5, 8.5, 9.0),
+    new Student("SV010", "Lê Thị Diễm", "Nữ", 2004, 8.0, 7.5, 8.5),
+    new Student("SV011", "Hoàng Văn Linh", "Nam", 2003, 6.0, 7.0, 6.5),
+    new Student("SV012", "Vũ Thị Ngọc", "Nữ", 2004, 9.0, 9.0, 8.5),
+    new Student("SV013", "Đặng Minh Tuấn", "Nam", 2005, 5.5, 6.0, 6.5),
+    new Student("SV014", "Bùi Thị Yến", "Nữ", 2004, 8.5, 8.0, 8.5),
+    new Student("SV015", "Ngô Văn Long", "Nam", 2003, 7.5, 7.5, 8.0),
+    new Student("SV016", "Lý Hoàng Yến", "Nữ", 2005, 9.0, 9.5, 9.0),
+    new Student("SV017", "Trương Quốc Bảo", "Nam", 2004, 8.0, 8.0, 8.5),
+    new Student("SV018", "Hồ Thị Thanh", "Nữ", 2004, 6.5, 7.0, 7.5),
+    new Student("SV019", "Đỗ Văn Sơn", "Nam", 2003, 5.0, 6.0, 5.5),
+    new Student("SV020", "Nguyễn Mai Anh", "Nữ", 2005, 8.5, 9.0, 9.0),
+    new Student("SV021", "Phan Trung Hiếu", "Nam", 2004, 7.5, 8.5, 8.0),
+    new Student("SV022", "Võ Thị Quỳnh", "Nữ", 2004, 9.0, 8.5, 8.5),
+    new Student("SV023", "Dương Anh Quân", "Nam", 2005, 8.0, 7.0, 7.5),
+    new Student("SV024", "Lương Thị Hoa", "Nữ", 2003, 6.5, 6.0, 7.0),
+    new Student("SV025", "Trần Kiên Cường", "Nam", 2004, 8.5, 8.0, 8.0),
+    new Student("SV026", "Nguyễn Thị Hạnh", "Nữ", 2005, 9.5, 9.0, 9.5)
 ];
 
 $totalStudents = count($students);
