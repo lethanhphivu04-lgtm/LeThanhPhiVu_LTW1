@@ -3,7 +3,7 @@ require "includes/header.php";
 require "classes/Student.php";
 
 $studenten = [
-    new Student("SV001", "Max Mustermann", "Männlich", 2003, 9.5, 9.0, 9.5),
+    new Student("SV001", "Lê Thanh Phi Vũ", "Männlich", 2003, 10.0, 10.0, 10.0),
     new Student("SV002", "Anna Schmidt", "Weiblich", 2004, 8.5, 8.0, 8.5),
     new Student("SV003", "Lukas Weber", "Männlich", 2003, 7.0, 6.5, 7.5),
     new Student("SV004", "Leon Meyer", "Männlich", 2002, 5.0, 5.5, 6.0),
