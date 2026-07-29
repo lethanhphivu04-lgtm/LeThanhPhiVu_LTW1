@@ -1,54 +1,54 @@
 <?php
-function formatPrice($price, $currency = "đ", $decimals = 0) {
-    return number_format($price, $decimals, ",", ".") . " " . $currency;
+function preisFormatieren($preis, $waehrung = "€", $nachkommastellen = 2) {
+    return number_format($preis, $nachkommastellen, ",", ".") . " " . $waehrung;
 }
 
-function getTotalQuantity($products) {
-    $total = 0;
-    foreach ($products as $product) {
-        $total += $product['quantity'];
+function gesamtzahlHolen($produkte) {
+    $gesamt = 0;
+    foreach ($produkte as $produkt) {
+        $gesamt += $produkt['menge'];
     }
-    return $total;
+    return $gesamt;
 }
 
-function getTotalPrice($products) {
-    $total = 0;
-    foreach ($products as $product) {
-        $total += $product['quantity'] * $product['price'];
+function gesamtpreisHolen($produkte) {
+    $gesamt = 0;
+    foreach ($produkte as $produkt) {
+        $gesamt += $produkt['menge'] * $produkt['preis'];
     }
-    return $total;
+    return $gesamt;
 }
 
-function showProductTable($products, $tableTitle, $currency = "đ", $decimals = 0) {
-    echo "<h3 class='mt-4 mb-3'>{$tableTitle}</h3>";
+function produktTabelleAnzeigen($produkte, $tabellenTitel, $waehrung = "€", $nachkommastellen = 2) {
+    echo "<h3 class='mt-4 mb-3'>{$tabellenTitel}</h3>";
     echo "<table class='table table-bordered table-hover table-striped align-middle'>";
     echo "
         <thead class='table-dark'>
             <tr>
-                <th width='60'>STT</th>
-                <th width='120'>Mã SP</th>
-                <th>Tên sản phẩm</th>
-                <th width='120' class='text-center'>Số lượng</th>
-                <th width='180' class='text-end'>Giá nhập</th>
+                <th width='60'>Nr.</th>
+                <th width='120'>Produkt-ID</th>
+                <th>Produktname</th>
+                <th width='120' class='text-center'>Menge</th>
+                <th width='180' class='text-end'>Einkaufspreis</th>
             </tr>
         </thead>
         <tbody>";
-    foreach ($products as $key => $product) {
+    foreach ($produkte as $key => $produkt) {
         echo "<tr>";
         echo "<td>" . ($key + 1) . "</td>";
-        echo "<td>{$product['id']}</td>";
-        echo "<td>{$product['proname']}</td>";
-        echo "<td class='text-center'>{$product['quantity']}</td>";
-        echo "<td class='text-end'>" . formatPrice($product['price'], $currency, $decimals) . "</td>";
+        echo "<td>{$produkt['id']}</td>";
+        echo "<td>{$produkt['name']}</td>";
+        echo "<td class='text-center'>{$produkt['menge']}</td>";
+        echo "<td class='text-end'>" . preisFormatieren($produkt['preis'], $waehrung, $nachkommastellen) . "</td>";
         echo "</tr>";
     }
     echo "
         </tbody>
         <tfoot class='table-warning fw-bold'>
             <tr>
-                <td colspan='3' class='text-end'>Tổng cộng</td>
-                <td class='text-center'>" . getTotalQuantity($products) . "</td>
-                <td class='text-end'>" . formatPrice(getTotalPrice($products), $currency, $decimals) . "</td>
+                <td colspan='3' class='text-end'>Gesamt</td>
+                <td class='text-center'>" . gesamtzahlHolen($produkte) . "</td>
+                <td class='text-end'>" . preisFormatieren(gesamtpreisHolen($produkte), $waehrung, $nachkommastellen) . "</td>
             </tr>
         </tfoot>";
     echo "</table>";

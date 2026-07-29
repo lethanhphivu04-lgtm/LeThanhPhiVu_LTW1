@@ -2,33 +2,33 @@
 require "includes/header.php";
 require "functions/common.php";
 
-// Danh sách Hoa tươi (Loại C1)
-$products_C1 = [
-    ["id" => "H001", "proname" => "Hoa Hồng Đỏ", "quantity" => 15, "price" => 250000],
-    ["id" => "H002", "proname" => "Hoa Hướng Dương", "quantity" => 20, "price" => 180000],
-    ["id" => "H003", "proname" => "Hoa Tulip Hà Lan", "quantity" => 10, "price" => 350000]
+// Liste frischer Blumen (Kategorie C1)
+$produkte_C1 = [
+    ["id" => "H001", "name" => "Rote Rose", "menge" => 15, "preis" => 10.50],
+    ["id" => "H002", "name" => "Sonnenblume", "menge" => 20, "preis" => 7.80],
+    ["id" => "H003", "name" => "Holländische Tulpe", "menge" => 10, "preis" => 15.00]
 ];
 
-// Danh sách Chậu cây cảnh (Loại C2)
-$products_C2 = [
-    ["id" => "C001", "proname" => "Chậu Cây Kim Tiền", "quantity" => 8, "price" => 150000],
-    ["id" => "C002", "proname" => "Chậu Cây Trầu Bà", "quantity" => 12, "price" => 95000],
-    ["id" => "C003", "proname" => "Chậu Cây Sen Đá", "quantity" => 25, "price" => 45000]
+// Liste von Zierpflanzentöpfen (Kategorie C2)
+$produkte_C2 = [
+    ["id" => "C001", "name" => "Geldbaum-Topf", "menge" => 8, "preis" => 12.50],
+    ["id" => "C002", "name" => "Efeutute-Topf", "menge" => 12, "preis" => 6.20],
+    ["id" => "C003", "name" => "Sukkulenten-Topf", "menge" => 25, "preis" => 3.50]
 ];
 ?>
 
 <main class="container my-5">
     <section class="mb-5">
-        <?php showProductTable($products_C1, "Danh sách Hoa tươi (Loại C1)"); ?>
+        <?php produktTabelleAnzeigen($produkte_C1, "Liste frischer Blumen (Kategorie C1)"); ?>
     </section>
 
     <section class="mb-5">
-       <?php showProductTable($products_C2, "Danh sách Chậu cây cảnh (Loại C2)", "VNĐ", 2); ?>
+       <?php produktTabelleAnzeigen($produkte_C2, "Liste von Zierpflanzentöpfen (Kategorie C2)", "€", 2); ?>
     </section>
 
     <section class="mb-5">
-        <h2>Lorem ipsum dolor sit amet.</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam id quasi voluptas saepe! Quasi repellat aliquid est dolorum quidem tenetur error ad similique, molestias non, iste exercitationem suscipit ex minima molestiae corrupti eligendi quibusdam voluptatibus facilis nobis et ducimus esse! Rerum sapiente ut asperiores laudantium, aut quia quam nisi accusamus explicabo vero numquam maxime, neque obcaecati, iusto incidunt eligendi ab voluptas eum. Consequuntur voluptate voluptatum totam pariatur nostrum asperiores deserunt consectetur ipsa iste delectus! Iusto, totam hic suscipit est earum magni quisquam blanditiis eveniet numquam eum laboriosam sed tempora unde ipsum delectus mollitia sequi dolorem explicabo. Harum in minima possimus!</p>
+        <h2>Willkommen zu unserem Praktikum</h2>
+        <p>Herzlich willkommen auf unserer Webseite für Web-Programmierung. Hier demonstrieren wir grundlegende Funktionen und modulare Strukturen in PHP mit Bootstrap 5.</p>
     </section>
 </main>
 

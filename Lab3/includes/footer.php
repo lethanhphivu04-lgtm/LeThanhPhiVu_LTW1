@@ -3,28 +3,28 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4 mb-3">
-                    <h5>Website PHP</h5>
-                    <p>Bài thực hành Lập trình Web - Lab 3.</p>
+                    <h5>PHP-Website</h5>
+                    <p>Web-Programmierung Praktikum - Labor 3.</p>
                 </div>
                 <div class="col-md-4 mb-3">
-                    <h5>Liên kết</h5>
+                    <h5>Links</h5>
                     <ul class="list-unstyled">
-                        <li><a href="#" class="text-white text-decoration-none">Liên kết 1</a></li>
-                        <li><a href="#" class="text-white text-decoration-none">Liên kết 2</a></li>
-                        <li><a href="#" class="text-white text-decoration-none">Liên kết 3</a></li>
-                        <li><a href="#" class="text-white text-decoration-none">Liên kết 4</a></li>
+                        <li><a href="#" class="text-white text-decoration-none">Link 1</a></li>
+                        <li><a href="#" class="text-white text-decoration-none">Link 2</a></li>
+                        <li><a href="#" class="text-white text-decoration-none">Link 3</a></li>
+                        <li><a href="#" class="text-white text-decoration-none">Link 4</a></li>
                     </ul>
                 </div>
                 <div class="col-md-4 mb-3">
-                    <h5>Thông tin sinh viên</h5>
-                    <p class="mb-1">Họ tên: Lê Thanh Phi Vũ</p>
-                    <p class="mb-1">MSSV: 2123110178</p>
-                    <p class="mb-1">Email: vule@example.com</p>
+                    <h5>Studenteninformationen</h5>
+                    <p class="mb-1">Name: Lê Thanh Phi Vũ</p>
+                    <p class="mb-1">Matrikelnummer: 2123110178</p>
+                    <p class="mb-1">E-Mail: vule@example.com</p>
                 </div>
             </div>
             <hr class="bg-secondary">
             <div class="text-center">
-                <p class="mb-0">&copy; 2026 Website PHP. All Rights Reserved.</p>
+                <p class="mb-0">&copy; 2026 PHP-Website. Alle Rechte vorbehalten.</p>
             </div>
         </div>
     </footer>

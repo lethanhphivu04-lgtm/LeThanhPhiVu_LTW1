@@ -1,91 +1,91 @@
 <?php
 class Student {
-    public $studentId;
-    public $fullName;
-    public $gender;
-    public $birthYear;
-    public $scoreHtml;
-    public $scoreCss;
-    public $scorePhp;
+    public $studentenId;
+    public $vollstaendigerName;
+    public $geschlecht;
+    public $geburtsjahr;
+    public $htmlNote;
+    public $cssNote;
+    public $phpNote;
 
-    public function __construct($studentId, $fullName, $gender, $birthYear, $scoreHtml, $scoreCss, $scorePhp) {
-        $this->studentId = $studentId;
-        $this->fullName = $fullName;
-        $this->gender = $gender;
-        $this->birthYear = $birthYear;
-        $this->scoreHtml = $scoreHtml;
-        $this->scoreCss = $scoreCss;
-        $this->scorePhp = $scorePhp;
+    public function __construct($studentenId, $vollstaendigerName, $geschlecht, $geburtsjahr, $htmlNote, $cssNote, $phpNote) {
+        $this->studentenId = $studentenId;
+        $this->vollstaendigerName = $vollstaendigerName;
+        $this->geschlecht = $geschlecht;
+        $this->geburtsjahr = $geburtsjahr;
+        $this->htmlNote = $htmlNote;
+        $this->cssNote = $cssNote;
+        $this->phpNote = $phpNote;
     }
 
-    public function getTotalScore() {
-        return $this->scoreHtml + $this->scoreCss + $this->scorePhp;
+    public function gesamtpunkteHolen() {
+        return $this->htmlNote + $this->cssNote + $this->phpNote;
     }
 
-    public function getAge() {
-        return date("Y") - $this->birthYear;
+    public function alterHolen() {
+        return date("Y") - $this->geburtsjahr;
     }
 
-    public function getAverage() {
-        return round($this->getTotalScore() / 3, 2);
+    public function durchschnittHolen() {
+        return round($this->gesamtpunkteHolen() / 3, 2);
     }
 
-    public function getRank() {
-        $avg = $this->getAverage();
-        if ($avg >= 9.0) {
-            return "Xuất sắc";
-        } elseif ($avg >= 8.0) {
-            return "Giỏi";
-        } elseif ($avg >= 6.5) {
-            return "Khá";
-        } elseif ($avg >= 5.0) {
-            return "Trung bình";
+    public function bewertungHolen() {
+        $durchschnitt = $this->durchschnittHolen();
+        if ($durchschnitt >= 9.0) {
+            return "Hervorragend";
+        } elseif ($durchschnitt >= 8.0) {
+            return "Gut";
+        } elseif ($durchschnitt >= 6.5) {
+            return "Befriedigend";
+        } elseif ($durchschnitt >= 5.0) {
+            return "Ausreichend";
         } else {
-            return "Yếu";
+            return "Mangelhaft";
         }
     }
 
-    public function getScholarship() {
-        if ($this->getAverage() >= 8.0 && $this->scoreHtml >= 5.0 && $this->scoreCss >= 5.0 && $this->scorePhp >= 5.0) {
-            return "Có";
+    public function stipendiumHolen() {
+        if ($this->durchschnittHolen() >= 8.0 && $this->htmlNote >= 5.0 && $this->cssNote >= 5.0 && $this->phpNote >= 5.0) {
+            return "Ja";
         }
         return "";
     }
 
-    public function showInfo($stt) {
-        $age = $this->getAge();
-        $total = $this->getTotalScore();
-        $avg = $this->getAverage();
-        $rank = $this->getRank();
-        $scholarship = $this->getScholarship();
+    public function infoAnzeigen($nr) {
+        $alter = $this->alterHolen();
+        $gesamt = $this->gesamtpunkteHolen();
+        $durchschnitt = $this->durchschnittHolen();
+        $bewertung = $this->bewertungHolen();
+        $stipendium = $this->stipendiumHolen();
 
-        $bgClass = "";
-        if ($rank == "Xuất sắc") {
-            $bgClass = "table-success";
-        } elseif ($rank == "Giỏi") {
-            $bgClass = "table-info";
-        } elseif ($rank == "Khá") {
-            $bgClass = "table-primary";
-        } elseif ($rank == "Trung bình") {
-            $bgClass = "table-warning";
+        $bgKlasse = "";
+        if ($bewertung == "Hervorragend") {
+            $bgKlasse = "table-success";
+        } elseif ($bewertung == "Gut") {
+            $bgKlasse = "table-info";
+        } elseif ($bewertung == "Befriedigend") {
+            $bgKlasse = "table-primary";
+        } elseif ($bewertung == "Ausreichend") {
+            $bgKlasse = "table-warning";
         } else {
-            $bgClass = "table-danger";
+            $bgKlasse = "table-danger";
         }
 
-        echo "<tr class='$bgClass'>
-            <td>$stt</td>
-            <td>$this->studentId</td>
-            <td>$this->fullName</td>
-            <td>$this->gender</td>
-            <td>$this->birthYear</td>
-            <td>$age</td>
-            <td>$this->scoreHtml</td>
-            <td>$this->scoreCss</td>
-            <td>$this->scorePhp</td>
-            <td>$total</td>
-            <td>$avg</td>
-            <td>$rank</td>
-            <td>$scholarship</td>
+        echo "<tr class='$bgKlasse'>
+            <td>$nr</td>
+            <td>$this->studentenId</td>
+            <td>$this->vollstaendigerName</td>
+            <td>$this->geschlecht</td>
+            <td>$this->geburtsjahr</td>
+            <td>$alter</td>
+            <td>$this->htmlNote</td>
+            <td>$this->cssNote</td>
+            <td>$this->phpNote</td>
+            <td>$gesamt</td>
+            <td>$durchschnitt</td>
+            <td>$bewertung</td>
+            <td>$stipendium</td>
         </tr>";
     }
 }
