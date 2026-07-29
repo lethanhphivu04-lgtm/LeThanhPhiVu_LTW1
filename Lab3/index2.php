@@ -1,6 +1,7 @@
 <?php
 require "includes/header.php";
 require "classes/Student.php";
+require "functions/student_stats.php";
 
 $students = [
     new Student("SV001", "Lê Thanh Phi Vũ", "Nam", 2004, 10, 10, 10),
@@ -30,33 +31,13 @@ $students = [
     new Student("SV025", "Trần Kiên Cường", "Nam", 2004, 8.5, 8.0, 8.0),
     new Student("SV026", "Nguyễn Thị Hạnh", "Nữ", 2005, 9.5, 9.0, 9.5)
 ];
-
-$totalStudents = count($students);
-$maleCount = 0;
-$femaleCount = 0;
-$scholarshipCount = 0;
-$maxAvg = 0;
-
-foreach ($students as $st) {
-    if ($st->gender == "Nam") {
-        $maleCount++;
-    } else {
-        $femaleCount++;
-    }
-    if ($st->getScholarship()) {
-        $scholarshipCount++;
-    }
-    if ($st->getAverage() > $maxAvg) {
-        $maxAvg = $st->getAverage();
-    }
-}
 ?>
 
 <main class="container my-5">
     <h2 class="mb-4">Danh sách sinh viên</h2>
 
     <div class="table-responsive mb-5">
-        <table class="table table-bordered table-hover table-striped align-middle">
+        <table class="table table-bordered table-hover align-middle">
             <thead class="table-dark text-center">
                 <tr>
                     <th>Mã SV</th>
@@ -82,30 +63,54 @@ foreach ($students as $st) {
         </table>
     </div>
 
-    <h4 class="mb-3">Thống kê tổng quan</h4>
+    <h4 class="mb-3">Dashboard thống kê lớp học</h4>
     <div class="row g-3 text-center mb-5">
         <div class="col-md-3">
             <div class="card bg-light border-0 shadow-sm p-3">
-                <h6 class="text-muted mb-1">Tổng sinh viên</h6>
-                <h3 class="mb-0 fw-bold"><?php echo $totalStudents; ?></h3>
+                <h6 class="text-muted mb-1">Tổng số sinh viên</h6>
+                <h3 class="mb-0 fw-bold"><?php echo countStudents($students); ?></h3>
             </div>
         </div>
         <div class="col-md-3">
             <div class="card bg-light border-0 shadow-sm p-3">
-                <h6 class="text-muted mb-1">Nam / Nữ</h6>
-                <h3 class="mb-0 fw-bold"><?php echo $maleCount . " / " . $femaleCount; ?></h3>
+                <h6 class="text-muted mb-1">Sinh viên Nam</h6>
+                <h3 class="mb-0 fw-bold"><?php echo countMaleStudents($students); ?></h3>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card bg-light border-0 shadow-sm p-3">
+                <h6 class="text-muted mb-1">Sinh viên Nữ</h6>
+                <h3 class="mb-0 fw-bold"><?php echo countFemaleStudents($students); ?></h3>
             </div>
         </div>
         <div class="col-md-3">
             <div class="card bg-light border-0 shadow-sm p-3">
                 <h6 class="text-muted mb-1">Đạt học bổng</h6>
-                <h3 class="mb-0 fw-bold text-success"><?php echo $scholarshipCount; ?></h3>
+                <h3 class="mb-0 fw-bold text-success"><?php echo countScholarshipStudents($students); ?></h3>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card bg-light border-0 shadow-sm p-3">
+                <h6 class="text-muted mb-1">Xếp loại Xuất sắc</h6>
+                <h3 class="mb-0 fw-bold text-success"><?php echo countExcellentStudents($students); ?></h3>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card bg-light border-0 shadow-sm p-3">
+                <h6 class="text-muted mb-1">Điểm TB cả lớp</h6>
+                <h3 class="mb-0 fw-bold"><?php echo getAverageScore($students); ?></h3>
             </div>
         </div>
         <div class="col-md-3">
             <div class="card bg-light border-0 shadow-sm p-3">
                 <h6 class="text-muted mb-1">Điểm TB cao nhất</h6>
-                <h3 class="mb-0 fw-bold text-primary"><?php echo $maxAvg; ?></h3>
+                <h3 class="mb-0 fw-bold text-primary"><?php echo getHighestAverage($students); ?></h3>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card bg-light border-0 shadow-sm p-3">
+                <h6 class="text-muted mb-1">Điểm TB thấp nhất</h6>
+                <h3 class="mb-0 fw-bold text-danger"><?php echo getLowestAverage($students); ?></h3>
             </div>
         </div>
     </div>

@@ -58,7 +58,20 @@ class Student
         $rank = $this->getRank();
         $scholarship = $this->getScholarship() ? "Học bổng" : "";
 
-        echo "<tr>";
+        $bgClass = "";
+        if ($rank == "Xuất sắc") {
+            $bgClass = "table-success";
+        } elseif ($rank == "Giỏi") {
+            $bgClass = "table-info";
+        } elseif ($rank == "Khá") {
+            $bgClass = "table-primary";
+        } elseif ($rank == "Trung bình") {
+            $bgClass = "table-warning";
+        } else {
+            $bgClass = "table-danger";
+        }
+
+        echo "<tr class=\"" . $bgClass . "\">";
         echo "<td>" . $this->studentId . "</td>";
         echo "<td>" . $this->fullName . "</td>";
         echo "<td>" . $this->gender . "</td>";
@@ -69,7 +82,7 @@ class Student
         echo "<td class=\"text-center\">" . $this->scorePhp . "</td>";
         echo "<td class=\"text-center fw-bold\">" . $avg . "</td>";
         echo "<td class=\"text-center\">" . $rank . "</td>";
-        echo "<td class=\"text-center text-success fw-bold\">" . $scholarship . "</td>";
+        echo "<td class=\"text-center fw-bold\">" . $scholarship . "</td>";
         echo "</tr>";
     }
 }
