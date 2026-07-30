@@ -1,13 +1,13 @@
 <?php
 class Student
 {
-    public $studentId;
-    public $fullName;
-    public $gender;
-    public $birthYear;
-    public $scoreHtml;
-    public $scoreCss;
-    public $scorePhp;
+   public string $studentId;
+public string $fullName;
+public string $gender;
+public int $birthYear;
+public float $scoreHtml;
+public float $scoreCss;
+public float $scorePhp;
 
     public function __construct($studentId, $fullName, $gender, $birthYear, $scoreHtml, $scoreCss, $scorePhp)
     {
