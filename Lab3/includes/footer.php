@@ -8,10 +8,10 @@
                 <div class="col-md-4 mb-3">
                     <h5 class="mb-3">Liên kết</h5>
                     <ul class="list-unstyled small">
-                        <li class="mb-1"><a href="index.php" class="text-secondary text-decoration-none">Liên kết 1</a></li>
-                        <li class="mb-1"><a href="index.php" class="text-secondary text-decoration-none">Liên kết 2</a></li>
-                        <li class="mb-1"><a href="index2.php" class="text-secondary text-decoration-none">Liên kết 3</a></li>
-                        <li class="mb-1"><a href="#" class="text-secondary text-decoration-none">Liên kết 4</a></li>
+                        <li class="mb-1"><a href="form-get.php" class="text-secondary text-decoration-none">Form GET (Câu B)</a></li>
+                        <li class="mb-1"><a href="form-post.php" class="text-secondary text-decoration-none">Form POST & Validation (Câu C, D)</a></li>
+                        <li class="mb-1"><a href="form-post-validation-more.php" class="text-secondary text-decoration-none">Validation nâng cao (Câu E)</a></li>
+                        <li class="mb-1"><a href="student-search.php" class="text-secondary text-decoration-none">Tìm kiếm sinh viên (Câu F)</a></li>
                     </ul>
                 </div>
                 <div class="col-md-4 mb-3">

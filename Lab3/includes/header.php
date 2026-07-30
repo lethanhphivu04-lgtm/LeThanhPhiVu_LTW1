@@ -15,6 +15,15 @@
                     <li class="nav-item"><a class="nav-link" href="index.php">Trang chủ</a></li>
                     <li class="nav-item"><a class="nav-link" href="index.php">Sản phẩm</a></li>
                     <li class="nav-item"><a class="nav-link" href="index2.php">Sinh viên</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownLab4" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Lab 4
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownLab4">
+                            <li><a class="dropdown-item" href="form-get.php">Form GET (Câu B)</a></li>
+                            <li><a class="dropdown-item" href="form-post.php">Form POST & Validation (Câu C, D)</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </div>
