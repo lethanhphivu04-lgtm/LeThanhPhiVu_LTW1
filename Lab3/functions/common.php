@@ -1,65 +1,70 @@
 <?php
-function formatPrice($price, $currency = "đ")
+// Function: Định dạng tiền tệ
+function formatPrice($price, $currency = "đ", $decimals = 0)
 {
-    return number_format($price, 0, ",", ".") . " " . $currency;
+    return number_format($price, $decimals, ",", ".") . " " . $currency;
 }
 
+// Function: Tính tổng số lượng sản phẩm
 function getTotalQuantity($products)
 {
     $total = 0;
-    foreach ($products as $p) {
-        $total += $p["quantity"];
+    foreach ($products as $product) {
+        $total += $product['quantity'];
     }
     return $total;
 }
 
+// Function: Tính tổng giá nhập của tất cả sản phẩm
 function getTotalPrice($products)
 {
     $total = 0;
-    foreach ($products as $p) {
-        $total += $p["quantity"] * $p["price"];
+    foreach ($products as $product) {
+        $total += $product['quantity'] * $product['price'];
     }
     return $total;
 }
 
-function renderProductTable($products, $categoryName, $currency = "đ")
+// Function: Hiển thị danh sách sản phẩm theo dạng bảng
+function showProductTable($products, $tableTitle, $currency = "đ", $decimals = 0)
 {
-    echo "<h3>" . $categoryName . "</h3>";
-    echo "<table class='table table-bordered table-striped table-hover mt-3'>";
-    echo "<thead class='table-dark'><tr>";
-    echo "<th>Mã sản phẩm</th>";
-    echo "<th>Tên sản phẩm</th>";
-    echo "<th>Số lượng</th>";
-    echo "<th>Đơn giá</th>";
-    echo "<th>Thành tiền</th>";
-    echo "</tr></thead>";
-    echo "<tbody>";
-
-    foreach ($products as $p) {
-        $subtotal = $p["quantity"] * $p["price"];
+    echo "<h3 class='mt-4 mb-3'>$tableTitle</h3>";
+    echo "<table class='table table-bordered table-hover table-striped align-middle'>";
+    echo "
+        <thead class='table-dark'>
+            <tr>
+                <th width='60'>STT</th>
+                <th width='120'>Mã SP</th>
+                <th>Tên sản phẩm</th>
+                <th width='120'>Số lượng</th>
+                <th width='180' class='text-end'>Giá nhập</th>
+            </tr>
+        </thead>
+        <tbody>
+    ";
+    foreach ($products as $key => $product) {
         echo "<tr>";
-        echo "<td>" . $p["id"] . "</td>";
-        echo "<td>" . $p["name"] . "</td>";
-        echo "<td>" . $p["quantity"] . "</td>";
-        echo "<td>" . formatPrice($p["price"], $currency) . "</td>";
-        echo "<td>" . formatPrice($subtotal, $currency) . "</td>";
+        echo "<td>" . ($key + 1) . "</td>";
+        echo "<td>" . $product['id'] . "</td>";
+        echo "<td>" . $product['proname'] . "</td>";
+        echo "<td class='text-center'>" . $product['quantity'] . "</td>";
+        echo "<td class='text-end'>" . formatPrice($product['price'], $currency, $decimals) . "</td>";
         echo "</tr>";
     }
-
-    $totalQty = getTotalQuantity($products);
-    $totalPrice = getTotalPrice($products);
-
-    echo "<tr class='table-warning fw-bold'>";
-    echo "<td colspan='2' class='text-end'>Tổng cộng:</td>";
-    echo "<td>" . $totalQty . "</td>";
-    echo "<td></td>";
-    echo "<td>" . formatPrice($totalPrice, $currency) . "</td>";
-    echo "</tr>";
-
-    echo "</tbody></table>";
+    echo "
+        </tbody>
+        <tfoot class='table-warning fw-bold'>
+            <tr>
+                <td colspan='3' class='text-end'>Tổng cộng</td>
+                <td class='text-center'>" . getTotalQuantity($products) . "</td>
+                <td class='text-end'>" . formatPrice(getTotalPrice($products), $currency, $decimals) . "</td>
+            </tr>
+        </tfoot>
+    ";
+    echo "</table>";
 }
 
-// Các hàm thống kê sinh viên (Bài D - Yêu cầu 7)
+// Các hàm thống kê sinh viên (Dashboard)
 function countStudents($students)
 {
     return count($students);
@@ -68,8 +73,8 @@ function countStudents($students)
 function countMaleStudents($students)
 {
     $count = 0;
-    foreach ($students as $st) {
-        if ($st->gender == "Nam") {
+    foreach ($students as $student) {
+        if ($student->gender == "Nam") {
             $count++;
         }
     }
@@ -79,8 +84,8 @@ function countMaleStudents($students)
 function countFemaleStudents($students)
 {
     $count = 0;
-    foreach ($students as $st) {
-        if ($st->gender == "Nữ") {
+    foreach ($students as $student) {
+        if ($student->gender == "Nữ") {
             $count++;
         }
     }
@@ -90,8 +95,8 @@ function countFemaleStudents($students)
 function countScholarshipStudents($students)
 {
     $count = 0;
-    foreach ($students as $st) {
-        if ($st->getScholarship()) {
+    foreach ($students as $student) {
+        if ($student->getScholarship()) {
             $count++;
         }
     }
@@ -101,8 +106,8 @@ function countScholarshipStudents($students)
 function countExcellentStudents($students)
 {
     $count = 0;
-    foreach ($students as $st) {
-        if ($st->getRank() == "Xuất sắc") {
+    foreach ($students as $student) {
+        if ($student->getRank() == "Xuất sắc") {
             $count++;
         }
     }
@@ -111,22 +116,22 @@ function countExcellentStudents($students)
 
 function getAverageScore($students)
 {
-    $sum = 0;
+    $total = 0;
     $count = countStudents($students);
     if ($count == 0) {
         return 0;
     }
-    foreach ($students as $st) {
-        $sum += $st->getAverage();
+    foreach ($students as $student) {
+        $total += $student->getAverage();
     }
-    return round($sum / $count, 2);
+    return round($total / $count, 2);
 }
 
 function getHighestAverage($students)
 {
     $max = 0;
-    foreach ($students as $st) {
-        $avg = $st->getAverage();
+    foreach ($students as $student) {
+        $avg = $student->getAverage();
         if ($avg > $max) {
             $max = $avg;
         }
@@ -136,13 +141,16 @@ function getHighestAverage($students)
 
 function getLowestAverage($students)
 {
-    $min = 10;
-    foreach ($students as $st) {
-        $avg = $st->getAverage();
+    if (empty($students)) {
+        return 0;
+    }
+    $min = $students[0]->getAverage();
+    foreach ($students as $student) {
+        $avg = $student->getAverage();
         if ($avg < $min) {
             $min = $avg;
         }
     }
     return $min;
 }
-?>
+

@@ -4,28 +4,23 @@
             <div class="row">
                 <div class="col-md-5">
                     <h5>Website PHP</h5>
-                    <p class="small text-muted">Website thực hành môn PHP, sử dụng Bootstrap 5 và kỹ thuật nhúng file với include, require.</p>
+                    <p class="small text-muted">Website thực hành môn PHP, sử dụng Bootstrap 5 và kỹ thuật xử lý Form GET/POST.</p>
                 </div>
                 <div class="col-md-3">
                     <h5>Liên kết</h5>
                     <ul class="list-unstyled small">
-                        <li><a href="#" class="text-white text-decoration-none">Liên kết 1</a></li>
-                        <li><a href="#" class="text-white text-decoration-none">Liên kết 2</a></li>
-                        <li><a href="#" class="text-white text-decoration-none">Liên kết 3</a></li>
-                        <li><a href="#" class="text-white text-decoration-none">Liên kết 4</a></li>
+                        <li><a href="form-get.php" class="text-white text-decoration-none">Form GET</a></li>
+                        <li><a href="form-post.php" class="text-white text-decoration-none">Form POST</a></li>
                     </ul>
                 </div>
                 <div class="col-md-4">
-                    <h5>Thông tin sinh viên</h5>
                     <p class="small text-muted">
-                        Họ tên: Nguyễn Văn A<br>
-                        MSSV: 22123456<br>
-                        Email: nguyenvana@example.com
+                        Họ tên: Lê Thanh Phi Vũ<br>
                     </p>
                 </div>
             </div>
             <hr>
-            <p class="text-center text-muted small mb-0">&copy; 2026 Website PHP. All Rights Reserved.</p>
+            <p class="text-center text-muted small mb-0"> 2026 PHP</p>
         </div>
     </footer>
 
@@ -34,4 +29,3 @@
 </body>
 
 </html>
-

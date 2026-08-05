@@ -1,16 +1,25 @@
 <?php
 class Student
 {
-   public string $studentId;
-public string $fullName;
-public string $gender;
-public int $birthYear;
-public float $scoreHtml;
-public float $scoreCss;
-public float $scorePhp;
+    // Properties
+    public string $studentId;
+    public string $fullName;
+    public string $gender;
+    public int $birthYear;
+    public float $scoreHtml;
+    public float $scoreCss;
+    public float $scorePhp;
 
-    public function __construct($studentId, $fullName, $gender, $birthYear, $scoreHtml, $scoreCss, $scorePhp)
-    {
+    // Constructor
+    public function __construct(
+        string $studentId,
+        string $fullName,
+        string $gender,
+        int $birthYear,
+        float $scoreHtml,
+        float $scoreCss,
+        float $scorePhp
+    ) {
         $this->studentId = $studentId;
         $this->fullName = $fullName;
         $this->gender = $gender;
@@ -20,17 +29,23 @@ public float $scorePhp;
         $this->scorePhp = $scorePhp;
     }
 
-    public function getAge()
+    // Methods
+    public function getTotalScore(): float
+    {
+        return $this->scoreHtml + $this->scoreCss + $this->scorePhp;
+    }
+
+    public function getAge(): int
     {
         return date("Y") - $this->birthYear;
     }
 
-    public function getAverage()
+    public function getAverage(): float
     {
-        return round(($this->scoreHtml + $this->scoreCss + $this->scorePhp) / 3, 2);
+        return round($this->getTotalScore() / 3, 2);
     }
 
-    public function getRank()
+    public function getRank(): string
     {
         $avg = $this->getAverage();
         if ($avg >= 9.0) {
@@ -46,18 +61,14 @@ public float $scorePhp;
         }
     }
 
-    public function getScholarship()
+    public function getScholarship(): bool
     {
-        return ($this->getAverage() >= 8.0 && $this->scoreHtml >= 7 && $this->scoreCss >= 7 && $this->scorePhp >= 7);
+        return ($this->getAverage() >= 8.0 && $this->scoreHtml >= 7.0 && $this->scoreCss >= 7.0 && $this->scorePhp >= 7.0);
     }
 
-    public function showInfo()
+    public function showInfo(): void
     {
-        $age = $this->getAge();
-        $avg = $this->getAverage();
         $rank = $this->getRank();
-        $scholarship = $this->getScholarship() ? "Học bổng" : "";
-
         $bgClass = "";
         if ($rank == "Xuất sắc") {
             $bgClass = "table-success";
@@ -71,19 +82,19 @@ public float $scorePhp;
             $bgClass = "table-danger";
         }
 
-        echo "<tr class=\"" . $bgClass . "\">";
-        echo "<td>" . $this->studentId . "</td>";
-        echo "<td>" . $this->fullName . "</td>";
-        echo "<td>" . $this->gender . "</td>";
-        echo "<td class=\"text-center\">" . $this->birthYear . "</td>";
-        echo "<td class=\"text-center\">" . $age . "</td>";
-        echo "<td class=\"text-center\">" . $this->scoreHtml . "</td>";
-        echo "<td class=\"text-center\">" . $this->scoreCss . "</td>";
-        echo "<td class=\"text-center\">" . $this->scorePhp . "</td>";
-        echo "<td class=\"text-center fw-bold\">" . $avg . "</td>";
-        echo "<td class=\"text-center\">" . $rank . "</td>";
-        echo "<td class=\"text-center fw-bold\">" . $scholarship . "</td>";
+        echo "<tr class='$bgClass'>";
+        echo "<td>{$this->studentId}</td>";
+        echo "<td>{$this->fullName}</td>";
+        echo "<td>{$this->gender}</td>";
+        echo "<td class='text-center'>{$this->birthYear}</td>";
+        echo "<td class='text-center'>" . $this->getAge() . "</td>";
+        echo "<td class='text-center'>{$this->scoreHtml}</td>";
+        echo "<td class='text-center'>{$this->scoreCss}</td>";
+        echo "<td class='text-center'>{$this->scorePhp}</td>";
+        echo "<td class='text-center'>" . $this->getAverage() . "</td>";
+        echo "<td class='text-center'>$rank</td>";
+        echo "<td class='text-center'>" . ($this->getScholarship() ? "Có" : "Không") . "</td>";
         echo "</tr>";
     }
 }
-?>
+

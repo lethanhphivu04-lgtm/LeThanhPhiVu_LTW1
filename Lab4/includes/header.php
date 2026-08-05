@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trang chủ</title>
+    <title>Lab 4 - Form & Validation</title>
 
     <!-- Bootstrap CSS (CDN)-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -21,17 +21,18 @@
             <div class="collapse navbar-collapse" id="navbarScroll">
                 <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="index.php">Home</a>
+                        <a class="nav-link active" aria-current="page" href="form-get.php">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="index.php">Liên kết 1</a>
+                        <a class="nav-link" href="form-get.php">Form GET</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="index2.php">Liên kết 2</a>
+                        <a class="nav-link" href="form-post.php">Form POST</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Liên kết 3</a>
+                        <a class="nav-link" href="student-search.php">Tìm kiếm sinh viên</a>
                     </li>
+
                 </ul>
                 <form class="d-flex">
                     <input class="form-control me-2" type="search" placeholder="Nhập ..." aria-label="Search">
@@ -40,4 +41,3 @@
             </div>
         </div>
     </nav>
-

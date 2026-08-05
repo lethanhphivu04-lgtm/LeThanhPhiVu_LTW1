@@ -1,0 +1,11 @@
+
+1. Tóm tắt công việc đã làm:
+- Cấu trúc & Giao diện: Chia thư mục chuẩn (assets, dao, models, includes), giao diện Bootstrap 5 + CSS 
+- Lớp Booking (models/Booking.php): Tạo 10 thuộc tính, constructor, getters, format tiền tệ và màu trạng thái.
+- Lớp BookingDAO (dao/BookingDAO.php): Tạo 20 dữ liệu mẫu, viết hàm getAll(), findById($id), filter() và sort.
+- Trang index.php: Hiển thị bảng danh sách, thống kê tổng số/tổng tiền, tìm kiếm, lọc và sắp xếp.
+- Trang detail.php: Đọc id từ GET, dùng findById($id) xem chi tiết và có nút quay lại.
+
+2. Cách chạy:
+- Copy folder vào htdocs của XAMPP -> Bật Apache.
+- Truy cập: http://localhost/Exam_LeThanhPhiVu/index.php

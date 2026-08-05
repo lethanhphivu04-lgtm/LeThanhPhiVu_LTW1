@@ -1,0 +1,25 @@
+/* File CSS bổ sung giao diện cho bài kiểm tra */
+body {
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Kích thước ảnh sản phẩm trong bảng */
+.product-img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 6px;
+    border: 1px solid #dee2e6;
+}
+
+/* Định dạng bảng */
+.table th {
+    background-color: #e9ecef;
+    color: #212529;
+    vertical-align: middle;
+}
+
+.table td {
+    vertical-align: middle;
+}
